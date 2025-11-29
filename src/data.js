@@ -5,19 +5,40 @@ export const locations = [
     id: 'education',
     label: 'Education',
     icon: BookOpen,
-    // Position percentages relative to the map container
-    x: 20, y: 30, 
+    x: 20, y: 30,
     content: {
-      title: "The Citadel of Knowledge",
-      subtitle: "Bachelor of Engineering (Computer Science & Engineering), Chandigarh University (2023-2027)",
-      body: [
-        "Current CGPA: 8.68/10",
-        "Relevant Coursework: JAVA, DBMS, OS, CN etc."
-      ],
-      subtitle: "Bachelor of Engineering (Computer Science & Engineering), Chandigarh University (2023-2027)",
-      body: [
-        "Current CGPA: 8.68/10",
-        "Relevant Coursework: JAVA, DBMS, OS, CN etc."
+      mainTitle: "The Citadel of Knowledge", // The overarching title
+      slides: [
+        // Slide 1: University
+        {
+          subtitle: "B.E. in Computer Science and Engineering",
+          body: [
+            "Institution: Chandigarh University",
+            "Duration: 2023 - 2027 (Expected)",
+            "Current CGPA: 8.68/10",
+            "Relevant Coursework: JAVA, DBMS, Operating Systems, Computer Networks."
+          ]
+        },
+         // Slide 2: High School (Example added to show functionality)
+        {
+            subtitle: "Class 12th (CBSE)",
+            body: [
+              "Institution: National Public School, Yamunanagar",
+              "Duration: 2022 - 2023",
+              "Stream: PCM",
+              "Marks: 92.8%",
+            ]
+        },
+        {
+            subtitle: "Class 10th (CBSE)",
+            body: [
+              "Institution: National Public School, Yamunanagar",
+              "Duration: 2021 - 2022",
+              "Marks: 92.2%",
+            ]
+        }
+
+
       ]
     }
   },
@@ -27,12 +48,24 @@ export const locations = [
     icon: Code,
     x: 45, y: 25,
     content: {
-      title: "The Forge of Creation",
-      subtitle: "Notable Personal & Professional Work",
-      body: [
-        "Project 'Valyria': A full-stack MERN eCommerce application handling 10k+ simulated concurrent users.",
-        "Project 'Palantir': A real-time data visualization dashboard using React and D3.js.",
-        "Open Source contributions to React UI libraries."
+      mainTitle: "The Forge of Creation",
+      slides: [
+        {
+          subtitle: "Verfalarm (2025) | Spring Boot, React, MongoDB",
+          body: [
+            "Engineered and deployed a scalable backend with Spring Boot and MongoDB for efficient storage and retrieval of user and product data.",
+            "Designed and implemented RESTful APIs for authentication, product lifecycle management, and reminder scheduling, ensuring modular and maintainable services.",
+            "Developed a notification service using JavaMailSender with customizable delivery frequencies (daily, weekly, monthly) and optimized engagement through behavioral analysis.",
+          ]
+        },
+        {
+            subtitle: "Project 'Palantir' - Real-time Dashboard",
+            body: [
+              "Built using React and D3.js for complex data visualization.",
+              "Uses WebSockets for real-time data updates.",
+              "Reduced data loading time by 40% through optimized API calls."
+            ]
+        }
       ]
     }
   },
@@ -41,13 +74,19 @@ export const locations = [
     label: 'Skills',
     icon: ScrollText,
     x: 75, y: 40,
+    // For single-entry items, we just have an array of one slide object
     content: {
-      title: "The Arsenal",
-      subtitle: "Technical Proficiencies",
-      body: [
-        "Frontend: React JS (Hooks, Context), Redux, Tailwind CSS, Framer Motion, Next.js.",
-        "Backend: Node.js, Express, MongoDB, PostgreSQL.",
-        "Tools: Git, Docker, AWS (S3, EC2), Jest/RTL."
+      mainTitle: "The Arsenal of Skills",
+      slides: [
+        {
+            subtitle: "Technical Proficiencies",
+            body: [
+                "Frontend: React JS, Redux Toolkit, Tailwind CSS, Framer Motion.",
+                "Backend: Node.js, Express.js.",
+                "Database: MongoDB, MySQL.",
+                "Tools: Git, Github, VS Code, Postman."
+            ]
+        }
       ]
     }
   },
@@ -57,12 +96,22 @@ export const locations = [
     icon: Award,
     x: 30, y: 65,
     content: {
-      title: "Hall of Triumphs",
-      subtitle: "Awards and Recognitions",
-      body: [
-        "Winner of the 2023 Global Hackathon (FinTech track).",
-        "Employee of the Quarter - Q4 2023 at TechCorp.",
-        "Published technical article featured on Hashnode weekly top stories."
+      mainTitle: "Hall of Triumphs",
+      slides: [
+        {
+            subtitle: "Hackathons & Competitions",
+            body: [
+                "Winner of Smart India Hackathon (Internal Round) 2024.",
+                "Runner-up in university-level coding contest 'CodeWars'."
+            ]
+        },
+        {
+            subtitle: "Recognitions",
+            body: [
+                "Earned 5-star badge in Problem Solving on HackerRank.",
+                "Ranked top 5% globally in LeetCode weekly contest."
+            ]
+        }
       ]
     }
   },
@@ -72,12 +121,15 @@ export const locations = [
     icon: Medal,
     x: 60, y: 75,
     content: {
-      title: "Guild Seals",
-      subtitle: "Verified Credentials",
-      body: [
-        "AWS Certified Solutions Architect – Associate.",
-        "Meta Frontend Developer Professional Certificate.",
-        "MongoDB Certified Developer Associate."
+      mainTitle: "Guild Seals",
+      slides: [
+        {
+            subtitle: "Professional Certificates",
+            body: [
+                "Meta Frontend Developer Professional Certificate (Coursera).",
+                "AWS Certified Cloud Practitioner."
+            ]
+        }
       ]
     }
   },
@@ -87,13 +139,16 @@ export const locations = [
     icon: Mail,
     x: 85, y: 60,
     content: {
-      title: "The Raven's Tower",
-      subtitle: "Send a raven (or an email)",
-      body: [
-        "Email: your.email@example.com",
-        "LinkedIn: linkedin.com/in/yourprofile",
-        "GitHub: github.com/yourusername",
-        "Location: Available for Remote Worldwide"
+      mainTitle: "The Raven's Tower",
+      slides: [
+          {
+            subtitle: "Connect with me",
+            body: [
+                "Email: namanluthra70@example.com",
+                "LinkedIn: https://www.linkedin.com/in/naman-luthra/",
+                "GitHub: github.com/namanluthra38"
+            ]
+          }
       ]
     }
   },
