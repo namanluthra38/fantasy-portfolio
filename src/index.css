@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-fantasy-dark text-fantasy-paper font-sans overflow-hidden;
+  /* The overflow-hidden is crucial for the parallax effect */
+}
+
+/* Custom Scrollbar for Modals */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #2c2520; 
+}
+::-webkit-scrollbar-thumb {
+  background: #d4af37; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b08d1e; 
+}
