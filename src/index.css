@@ -27,3 +27,27 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #b08d1e; 
 }
+
+/* Add to src/index.css */
+
+@layer utilities {
+  /* Utility class for internal containers that need scrolling */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #d4af37 #2c2520;
+  }
+
+  /* Webkit (Chrome/Safari/Edge) targeting for the utility class */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px; /* Slightly thinner for internal elements */
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(44, 37, 32, 0.5);
+    border-radius: 3px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(212, 175, 55, 0.8);
+    border-radius: 3px;
+    border: 1px solid rgba(26, 22, 18, 0.5);
+  }
+}

@@ -55,7 +55,9 @@ export const locations = [
           body: [
             "Engineered and deployed a scalable backend with Spring Boot and MongoDB for efficient storage and retrieval of user and product data.",
             "Designed and implemented RESTful APIs for authentication, product lifecycle management, and reminder scheduling, ensuring modular and maintainable services.",
-            "Developed a notification service using JavaMailSender with customizable delivery frequencies (daily, weekly, monthly) and optimized engagement through behavioral analysis.",
+            "Integrated JWT-based authentication to secure user sessions and protect sensitive endpoints.",
+           // "Developed a notification service using JavaMailSender with customizable delivery frequencies (daily, weekly, monthly) and optimized engagement through behavioral analysis.",
+            //"Focused on performance, reliability, and user-centric workflows following industry best practices in backend development."
           ]
         },
         {
@@ -81,10 +83,12 @@ export const locations = [
         {
             subtitle: "Technical Proficiencies",
             body: [
-                "Frontend: React JS, Redux Toolkit, Tailwind CSS, Framer Motion.",
-                "Backend: Node.js, Express.js.",
-                "Database: MongoDB, MySQL.",
-                "Tools: Git, Github, VS Code, Postman."
+                "Programming Languages: Java, JavaScript, Python, C++.",
+                "Frontend: React JS, HTML, CSS",
+                "Backend: Spring Boot, Microservices Architecture, REST APIs,",
+                "Database: MongoDB, PostgreSQL.",
+                "Tools: Git, Github, VS Code, Postman, Docker",
+                "Problem Solving: 600+ DSA problems solved on LeetCode and 100+ on other platforms."
             ]
         }
       ]
@@ -145,7 +149,7 @@ export const locations = [
             subtitle: "Connect with me",
             body: [
                 "Email: namanluthra70@example.com",
-                "LinkedIn: https://www.linkedin.com/in/naman-luthra/",
+                "LinkedIn: www.linkedin.com/in/naman-luthra",
                 "GitHub: github.com/namanluthra38"
             ]
           }

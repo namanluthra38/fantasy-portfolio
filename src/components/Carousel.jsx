@@ -4,11 +4,10 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Carousel = ({ slides }) => {
   const [[page, direction], setPage] = useState([0, 0]);
-  // Ensure slides exist before calculating index to prevent errors
   if (!slides || slides.length === 0) return null;
 
   const slideIndex = Math.abs(page % slides.length);
-  const currentSlideData = slides[slideIndex]; // Get the current slide object
+  const currentSlideData = slides[slideIndex];
 
   const paginate = (newDirection) => {
     setPage([page + newDirection, newDirection]);
@@ -36,11 +35,11 @@ const Carousel = ({ slides }) => {
     return Math.abs(offset) * velocity;
   };
 
-  const navBtnStyle = "absolute top-1/2 -translate-y-1/2 z-10 bg-fantasy-dark/50 text-fantasy-gold p-2 rounded-full hover:bg-fantasy-gold hover:text-fantasy-dark transition-colors border-2 border-fantasy-gold/30 backdrop-blur-sm pointer-events-auto";
+  const navBtnStyle = "absolute top-1/2 -translate-y-1/2 z-20 bg-fantasy-dark/50 text-fantasy-gold p-2 rounded-full hover:bg-fantasy-gold hover:text-fantasy-dark transition-colors border-2 border-fantasy-gold/30 backdrop-blur-sm pointer-events-auto";
 
   return (
-    // Increased minimum height to accommodate lists
-    <div className="relative w-full min-h-[400px] flex items-center justify-center overflow-hidden rounded-lg bg-fantasy-dark/10 border border-fantasy-gold/20 p-8">
+    // CHANGED: Changed min-h-[500px] to h-full so it fills the modal body area completely.
+    <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg bg-fantasy-dark/10 border border-fantasy-gold/20">
       
       <AnimatePresence initial={false} custom={direction} mode="wait">
         <motion.div
@@ -62,15 +61,19 @@ const Carousel = ({ slides }) => {
             if (swipe < -swipeConfidenceThreshold) paginate(1);
             else if (swipe > swipeConfidenceThreshold) paginate(-1);
           }}
-          // Changed to text-left and align-start for better list viewing
-          className="absolute w-full px-12 flex flex-col items-start justify-center h-full"
+          // This absolute inset-0 makes the slide fill the container exactly.
+          className="absolute inset-0 flex items-center justify-center"
         >
-           {/* --- NEW CONTENT RENDERING LOGIC --- */}
-           <div className="w-full">
-                <h3 className="text-2xl font-bold mb-6 text-fantasy-accent font-fantasy border-b-2 border-fantasy-gold/30 pb-2 inline-block">
+           {/* --- THE SINGLE SCROLL CONTAINER --- */}
+           {/* This div has max-h-full and overflow-y-auto. This is the ONLY place scrolling happens. */}
+           {/* Adjusted padding for better look inside the border */}
+           <div className="w-full h-full max-h-full overflow-y-auto px-12 py-8 custom-scrollbar">
+             {/* Added a wrapper for content to ensure sticky header works right with padding */}
+             <div className="relative">
+                <h3 className="text-2xl font-bold mb-6 text-fantasy-accent font-fantasy border-b-2 border-fantasy-gold/30 pb-2 inline-block sticky top-0 bg-fantasy-paper/90 backdrop-blur-md pt-2 z-10">
                     {currentSlideData.subtitle}
                 </h3>
-                <ul className="space-y-4 ml-2">
+                <ul className="space-y-4 ml-2 pb-4">
                     {currentSlideData.body.map((item, index) => (
                         <li key={index} className="flex items-start">
                             <span className="text-fantasy-accent mr-3 text-xl leading-none mt-1">•</span>
@@ -78,6 +81,7 @@ const Carousel = ({ slides }) => {
                         </li>
                     ))}
                 </ul>
+             </div>
            </div>
            {/* ----------------------------------- */}
 
@@ -93,7 +97,8 @@ const Carousel = ({ slides }) => {
             <ChevronRight size={24} />
           </button>
            
-           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+           {/* Dots */}
+           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 pointer-events-none">
             {slides.map((_, idx) => (
                 <div 
                     key={idx}

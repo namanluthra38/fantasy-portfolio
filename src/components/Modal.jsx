@@ -16,6 +16,7 @@ const Modal = ({ isOpen, onClose, data }) => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [isOpen, onClose]);
 
+    // UX: Prevent body scroll when modal is open
     useEffect(() => {
       if (isOpen) document.body.style.overflow = 'hidden';
       else document.body.style.overflow = 'unset';
@@ -29,6 +30,7 @@ const Modal = ({ isOpen, onClose, data }) => {
 
     const modalVariants = {
         hidden: { y: 50, opacity: 0, scale: 0.95 },
+        // We set a fixed height here (e.g., h-[85vh]) so the internal parts know how much space they have.
         visible: { 
             y: 0, 
             opacity: 1, 
@@ -50,17 +52,17 @@ const Modal = ({ isOpen, onClose, data }) => {
                 >
                     <motion.div
                         ref={modalRef}
-                        // Increased max-width for better presentation of lists
-                        className="bg-fantasy-paper bg-parchment-texture text-fantasy-dark w-full max-w-4xl rounded-lg shadow-2xl border-4 border-fantasy-dark overflow-hidden relative flex flex-col max-h-[90vh]"
+                        // CHANGED: Added h-[85vh] to give it a definite height constraint.
+                        // Removed max-h-[90vh] in favor of the explicit height for better flex behavior.
+                        className="bg-fantasy-paper bg-parchment-texture text-fantasy-dark w-full max-w-4xl h-[85vh] rounded-lg shadow-2xl border-4 border-fantasy-dark overflow-hidden relative flex flex-col"
                         variants={modalVariants}
                         initial="hidden"
                         animate="visible"
                         exit="exit"
                     >
-                        {/* Header */}
+                        {/* Header - Flex shrink 0 prevents it from squishing */}
                         <div className="bg-fantasy-dark text-fantasy-gold p-6 flex justify-between items-center border-b-4 border-fantasy-gold/50 relative shrink-0">
                             <div>
-                                {/* UPDATED: Use mainTitle */}
                                 <h2 className="text-3xl font-fantasy font-bold tracking-wider">{data.content.mainTitle}</h2>
                             </div>
                             
@@ -74,12 +76,14 @@ const Modal = ({ isOpen, onClose, data }) => {
                             <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-fantasy-gold"></div>
                         </div>
 
-                        {/* Body */}
-                        <div className="p-8 relative overflow-y-auto">
-                           {/* UPDATED: Pass the slides array */}
+                        {/* Body - THE FIX IS HERE */}
+                        {/* CHANGED: Removed 'overflow-y-auto'. Added 'flex-grow' and 'overflow-hidden'. */}
+                        {/* This forces the child (Carousel) to handle the scrolling within this defined space. */}
+                        <div className="relative flex-grow overflow-hidden p-6">
                            <Carousel slides={data.content.slides} />
                         </div>
                         
+                        {/* Footer - Flex shrink 0 prevents it from squishing */}
                         <div className="h-4 bg-fantasy-dark border-t-2 border-fantasy-gold/50 shrink-0"></div>
                     </motion.div>
                 </motion.div>
