@@ -10,11 +10,19 @@ import mapBg from './assets/map.png';
 function App() {
   const [activeLocationId, setActiveLocationId] = useState(null);
   const [showGuide, setShowGuide] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const moveX = useTransform(mouseX, [-1, 1], [50, -50]);
   const moveY = useTransform(mouseY, [-1, 1], [50, -50]);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    onResize();
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -24,9 +32,11 @@ function App() {
       mouseX.set(x);
       mouseY.set(y);
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    if (!isMobile) {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
     return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isMobile]);
 
   const handleMarkerClick = (id) => {
     setActiveLocationId(id);
@@ -42,24 +52,24 @@ function App() {
   return (
     <div className="relative w-screen h-screen overflow-hidden bg-fantasy-dark">
         
-      <div className="absolute top-8 left-1/2 -translate-x-1/2 z-30 text-center pointer-events-none">
-        <h1 className="font-fantasy text-4xl md:text-6xl text-fantasy-gold drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)]">
+      <div className="absolute top-6 left-1/2 -translate-x-1/2 z-30 text-center pointer-events-none px-4">
+        <h1 className="font-fantasy text-2xl sm:text-3xl md:text-4xl lg:text-6xl text-fantasy-gold drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)]">
             Naman's Chronicles
         </h1>
       </div>
 
       <Motion.div
         className="absolute inset-[-5%] w-[110%] h-[110%] z-10 flex items-center justify-center"
-        style={{ x: moveX, y: moveY }}
+        style={!isMobile ? { x: moveX, y: moveY } : undefined}
         transition={{ type: "tween", ease: "easeOut", duration: 0.5 }}
       >
-        <div className="relative w-full h-full max-w-[2500px] max-h-[1400px] mx-auto aspect-video shadow-2xl">
-            <img 
+        <div className="relative w-full h-full max-w-[2500px] max-h-[1400px] mx-auto aspect-video md:aspect-video sm:aspect-[4/3] shadow-2xl p-2 md:p-0">
+            <img
                 src={mapBg} 
                 alt="Fantasy World Map" 
-                className="w-full h-full object-cover rounded-xl opacity-90"
+                className="w-full h-full object-cover rounded-md md:rounded-xl opacity-90"
             />
-            <div className="absolute inset-0 bg-fantasy-dark/30 mix-blend-overlay pointer-events-none rounded-xl"></div>
+            <div className="absolute inset-0 bg-fantasy-dark/30 mix-blend-overlay pointer-events-none rounded-md md:rounded-xl"></div>
 
             {locations.map(location => (
             <MapMarker 

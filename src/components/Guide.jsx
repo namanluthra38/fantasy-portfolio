@@ -21,19 +21,19 @@ const Guide = ({ isVisible, onDismiss }) => {
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className="fixed bottom-0 left-2 md:left-10 z-40 flex items-end pointer-events-none">
-          
+        <div className="fixed bottom-0 left-2 md:left-10 z-40 flex items-end pointer-events-none sm:pointer-events-auto">
+
           <div className="relative">
             
             <Motion.div
               initial={{ x: -300, opacity: 0 }}
               animate={{
-                  x: 0, 
+                  x: 0,
                   opacity: 1,
                   transition: { type: "spring", stiffness: 100, damping: 20 }
               }}
               exit={{
-                  x: -300, 
+                  x: -300,
                   opacity: 0,
                   transition: { delay: 0.3, duration: 0.4, ease: "easeInOut" }
               }}
@@ -42,7 +42,7 @@ const Guide = ({ isVisible, onDismiss }) => {
               <img 
                 src={charImg} 
                 alt="Guide Character" 
-                className="h-[350px] md:h-[450px] w-auto object-contain drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]"
+                className="h-[220px] sm:h-[300px] md:h-[350px] lg:h-[450px] w-auto object-contain drop-shadow-[0_0_15px_rgba(0,0,0,0.8)]"
               />
             </Motion.div>
 
@@ -56,24 +56,25 @@ const Guide = ({ isVisible, onDismiss }) => {
                   opacity: 0, scale: 0.8, y: 20,
                   transition: { delay: 0, duration: 0.3 }
               }}
-              className="absolute left-[65%] bottom-[65%] z-30 pointer-events-auto w-[280px] md:w-[350px]"
+              className="absolute left-[60%] sm:left-[62%] bottom-[60%] z-30 pointer-events-auto w-[220px] sm:w-[280px] md:w-[350px]"
             >
-              <div className="bg-[#1a1612]/95 border-2 border-fantasy-gold rounded-lg p-5 shadow-2xl relative text-fantasy-paper font-fantasy tracking-wide leading-relaxed">
-                
-                <div className="absolute bottom-4 -left-2 w-5 h-5 bg-[#1a1612] border-l-2 border-b-2 border-fantasy-gold transform rotate-45"></div>
+              <div className="bg-[#1a1612]/95 border-2 border-fantasy-gold rounded-lg p-4 sm:p-5 shadow-2xl relative text-fantasy-paper font-fantasy tracking-wide leading-relaxed">
+
+                <div className="absolute bottom-3 -left-2 w-4 h-4 bg-[#1a1612] border-l-2 border-b-2 border-fantasy-gold transform rotate-45"></div>
 
                 <div className="absolute -top-4 left-4 bg-fantasy-accent px-3 py-1 rounded border border-fantasy-gold shadow-md">
-                  <span className="text-white text-sm font-bold tracking-wider">NAMAN</span>
+                  <span className="text-white text-xs sm:text-sm font-bold tracking-wider">NAMAN</span>
                 </div>
 
                 <button
                   onClick={onDismiss}
                   className="absolute -top-3 -right-3 bg-fantasy-dark border border-fantasy-gold rounded-full p-1 text-fantasy-gold hover:text-white hover:bg-red-900 transition-colors"
                 >
-                  <X size={16} />
+                  <X size={14} className="sm:hidden" />
+                  <X size={16} className="hidden sm:inline" />
                 </button>
 
-                <p className="text-sm md:text-base drop-shadow-md min-h-[80px]">
+                <p className="text-xs sm:text-sm md:text-base drop-shadow-md min-h-[64px]">
                   {displayedText}
                   <span className="animate-pulse text-fantasy-gold">|</span>
                 </p>

@@ -35,7 +35,7 @@ const Carousel = ({ slides }) => {
     return Math.abs(offset) * velocity;
   };
 
-  const navBtnStyle = "absolute top-1/2 -translate-y-1/2 z-20 bg-fantasy-dark/50 text-fantasy-gold p-2 rounded-full hover:bg-fantasy-gold hover:text-fantasy-dark transition-colors border-2 border-fantasy-gold/30 backdrop-blur-sm pointer-events-auto";
+  const navBtnStyle = "absolute top-1/2 -translate-y-1/2 z-20 bg-fantasy-dark/60 text-fantasy-gold p-2 md:p-3 rounded-full hover:bg-fantasy-gold hover:text-fantasy-dark transition-colors border-2 border-fantasy-gold/30 backdrop-blur-sm pointer-events-auto touch-none md:touch-auto";
 
   return (
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg bg-fantasy-dark/10 border border-fantasy-gold/20">
@@ -62,12 +62,12 @@ const Carousel = ({ slides }) => {
           }}
           className="absolute inset-0 flex items-center justify-center"
         >
-           <div className="w-full h-full max-h-full overflow-y-auto px-12 py-8 custom-scrollbar">
+           <div className="w-full h-full max-h-full overflow-y-auto px-6 md:px-12 py-6 custom-scrollbar">
              <div>
-                <h3 className="text-2xl font-bold mb-6 text-fantasy-accent font-fantasy border-b-2 border-fantasy-gold/30 pb-2 inline-block">
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-fantasy-accent font-fantasy border-b-2 border-fantasy-gold/30 pb-2 inline-block">
                     {currentSlideData.subtitle}
                 </h3>
-                <ul className="space-y-4 ml-2 pb-4">
+                <ul className="space-y-3 md:space-y-4 ml-0 md:ml-2 pb-4">
                     {currentSlideData.body.map((item, index) => {
                         const isLink = typeof item === 'object' && item.url;
                         const content = isLink ? item.label : item;
@@ -78,16 +78,16 @@ const Carousel = ({ slides }) => {
 
                                 {isLink ? (
                                     <a
-                                        href={item.url} 
+                                        href={item.url}
                                         target="_blank" 
                                         rel="noopener noreferrer"
-                                        className="text-lg leading-relaxed font-medium text-[#000] hover:text-[#7d7505] underline decoration-[#d4af37]/60 underline-offset-4 transition-colors flex items-center gap-2 group"
+                                        className="text-base md:text-lg leading-relaxed font-medium text-[#000] hover:text-[#7d7505] underline decoration-[#d4af37]/60 underline-offset-4 transition-colors flex items-center gap-2 group"
                                     >
                                         {content}
                                         <ExternalLink size={16} className="opacity-70 group-hover:opacity-100 transition-opacity" />
                                     </a>
                                 ) : (
-                                    <p className="text-lg leading-relaxed font-medium text-fantasy-dark">
+                                    <p className="text-base md:text-lg leading-relaxed font-medium text-fantasy-dark">
                                         {content}
                                     </p>
                                 )}
@@ -102,11 +102,11 @@ const Carousel = ({ slides }) => {
 
       {slides.length > 1 && (
         <>
-          <button className={`${navBtnStyle} left-2`} onClick={() => paginate(-1)}>
-            <ChevronLeft size={24} />
+          <button className={`${navBtnStyle} left-2`} onClick={() => paginate(-1)} aria-label="Previous slide">
+            <ChevronLeft size={20} />
           </button>
-          <button className={`${navBtnStyle} right-2`} onClick={() => paginate(1)}>
-            <ChevronRight size={24} />
+          <button className={`${navBtnStyle} right-2`} onClick={() => paginate(1)} aria-label="Next slide">
+            <ChevronRight size={20} />
           </button>
            
            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 pointer-events-none">

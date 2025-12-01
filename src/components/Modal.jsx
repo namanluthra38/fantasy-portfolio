@@ -86,28 +86,28 @@ const modalVariants = {
                 >
                     <Motion.div
                         ref={modalRef}
-                        className="bg-fantasy-paper bg-parchment-texture text-fantasy-dark w-full max-w-4xl h-[85vh] rounded-lg shadow-2xl border-4 border-fantasy-dark overflow-hidden relative flex flex-col"
+                        className="bg-fantasy-paper bg-parchment-texture text-fantasy-dark w-full max-w-3xl sm:max-w-4xl md:max-w-5xl h-[80vh] sm:h-[85vh] rounded-lg shadow-2xl border-4 border-fantasy-dark overflow-hidden relative flex flex-col"
                         variants={modalVariants}
                         initial="hidden"
                         animate="visible"
                         exit="exit"
                     >
-                        <div className="bg-fantasy-dark text-fantasy-gold p-6 flex justify-between items-center border-b-4 border-fantasy-gold/50 relative shrink-0">
+                        <div className="bg-fantasy-dark text-fantasy-gold p-4 sm:p-6 flex justify-between items-center border-b-4 border-fantasy-gold/50 relative shrink-0">
                             <div>
-                                <h2 className="text-3xl font-fantasy font-bold tracking-wider">{data.content.mainTitle}</h2>
+                                <h2 className="text-xl sm:text-2xl md:text-3xl font-fantasy font-bold tracking-wider">{data.content.mainTitle}</h2>
                             </div>
-                            
-                             <button 
+
+                             <button
                                 onClick={onClose}
                                 className="text-fantasy-gold hover:text-white transition-colors p-1 hover:bg-white/10 rounded-full z-10"
                             >
-                                <X size={28} />
+                                <X size={22} />
                             </button>
                             <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-fantasy-gold"></div>
                             <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-fantasy-gold"></div>
                         </div>
 
-                        <div className="relative flex-grow overflow-hidden p-6">
+                        <div className="relative flex-grow overflow-hidden p-4 sm:p-6">
                            <Carousel slides={data.content.slides} />
                         </div>
                         
