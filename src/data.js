@@ -7,9 +7,9 @@ export const locations = [
     icon: BookOpen,
     x: 20, y: 30,
     content: {
-      mainTitle: "The Citadel of Knowledge", // The overarching title
+      mainTitle: "The Citadel of Knowledge", 
       slides: [
-        // Slide 1: University
+        
         {
           subtitle: "B.E. in Computer Science and Engineering",
           body: [
@@ -19,7 +19,7 @@ export const locations = [
             "Relevant Coursework: JAVA, DBMS, Operating Systems, Computer Networks."
           ]
         },
-         // Slide 2: High School (Example added to show functionality)
+
         {
             subtitle: "Class 12th (CBSE)",
             body: [
@@ -33,7 +33,7 @@ export const locations = [
             subtitle: "Class 10th (CBSE)",
             body: [
               "Institution: National Public School, Yamunanagar",
-              "Duration: 2021 - 2022",
+              "Duration: 2020 - 2021",
               "Marks: 92.2%",
             ]
         }
@@ -51,22 +51,30 @@ export const locations = [
       mainTitle: "The Forge of Creation",
       slides: [
         {
-          subtitle: "Verfalarm (2025) | Spring Boot, React, MongoDB",
-          body: [
-            "Engineered and deployed a scalable backend with Spring Boot and MongoDB for efficient storage and retrieval of user and product data.",
-            "Designed and implemented RESTful APIs for authentication, product lifecycle management, and reminder scheduling, ensuring modular and maintainable services.",
-            "Integrated JWT-based authentication to secure user sessions and protect sensitive endpoints.",
-           // "Developed a notification service using JavaMailSender with customizable delivery frequencies (daily, weekly, monthly) and optimized engagement through behavioral analysis.",
-            //"Focused on performance, reliability, and user-centric workflows following industry best practices in backend development."
-          ]
+            subtitle: "Hostel Help (2025) | Hostel Management System",
+            body: [
+              "A microservices-based full-stack system for managing hostel rooms, students, staff, and operations.",
+              "Technologies: React (frontend), Spring Boot microservices (backend), PostgreSQL + MongoDB (databases), Docker (deployment).",
+              "Implemented secure authentication and authorization using JWT across all services.",
+              "Developed modular microservices for student management, room allocation, payments, and admin operations.",
+              "Used PostgreSQL for relational data and MongoDB for flexible document-based records.",
+              "Containerized all services using Docker for portability, scalability, and simplified deployment.",
+              "Focused on service isolation, reliability, and smooth communication between frontend and backend."
+            ]
+
         },
         {
-            subtitle: "Project 'Palantir' - Real-time Dashboard",
+            subtitle: "Verfalarm (2025) | Product Expiration Reminder",
             body: [
-              "Built using React and D3.js for complex data visualization.",
-              "Uses WebSockets for real-time data updates.",
-              "Reduced data loading time by 40% through optimized API calls."
+              "A full-stack application that helps users track product expiration dates and receive timely reminders.",
+              "Technologies: React (frontend), Spring Boot (backend), MongoDB (database).",
+              "Engineered a scalable Spring Boot backend with MongoDB for efficient data handling.",
+              "Designed RESTful APIs for authentication, product management, and reminder scheduling.",
+              "Integrated JWT-based authentication to secure all user sessions and endpoints.",
+              "Developed an email notification service using JavaMailSender with daily, weekly, and monthly reminders.",
+              "Focused on performance, reliability, and user-centric workflows following industry best practices."
             ]
+
         }
       ]
     }
@@ -75,8 +83,7 @@ export const locations = [
     id: 'skills',
     label: 'Skills',
     icon: ScrollText,
-    x: 75, y: 40,
-    // For single-entry items, we just have an array of one slide object
+    x: 78, y: 40,
     content: {
       mainTitle: "The Arsenal of Skills",
       slides: [
@@ -103,17 +110,11 @@ export const locations = [
       mainTitle: "Hall of Triumphs",
       slides: [
         {
-            subtitle: "Hackathons & Competitions",
-            body: [
-                "Winner of Smart India Hackathon (Internal Round) 2024.",
-                "Runner-up in university-level coding contest 'CodeWars'."
-            ]
-        },
-        {
             subtitle: "Recognitions",
             body: [
-                "Earned 5-star badge in Problem Solving on HackerRank.",
-                "Ranked top 5% globally in LeetCode weekly contest."
+               "Scored 100/100 in Automata Pro (Coding) and 86/100 in Automata Fix (Debugging) in the AMCAT assessment.",
+                "Ranked 2nd among all CSE students at Chandigarh University (2027 PO batch) based on AMCAT performance.",
+                "Ranked top 15% globally on LeetCode rankings."
             ]
         }
       ]
@@ -123,15 +124,15 @@ export const locations = [
     id: 'certifications',
     label: 'Certifications',
     icon: Medal,
-    x: 60, y: 75,
+    x: 58, y: 75,
     content: {
       mainTitle: "Guild Seals",
       slides: [
         {
             subtitle: "Professional Certificates",
             body: [
-                "Meta Frontend Developer Professional Certificate (Coursera).",
-                "AWS Certified Cloud Practitioner."
+                "Linear Algebra for Machine Learning and Data Science - DeepLearning.AI.",
+                "NPTEL Cloud Computing - IIT Kharagpur.",     
             ]
         }
       ]

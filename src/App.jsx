@@ -58,7 +58,7 @@ function App() {
         <h1 className="font-fantasy text-4xl md:text-6xl text-fantasy-gold drop-shadow-[0_4px_4px_rgba(0,0,0,0.9)]">
             Naman's Chronicles
         </h1>
-        <p className="text-fantasy-paper/80 mt-2 font-fantasy text-xl">Explore the map to uncover my journey</p>
+        <p className="text-fantasy/80 mt-2 font-fantasy text-xl">Explore the map to uncover my journey</p>
       </div>
 
       {/* The Movable Map Container */}
@@ -75,7 +75,7 @@ function App() {
                 alt="Fantasy World Map" 
                 className="w-full h-full object-cover rounded-xl opacity-90"
             />
-            // Overlay to darken the map slightly for better marker contrast
+            
             <div className="absolute inset-0 bg-fantasy-dark/30 mix-blend-overlay pointer-events-none rounded-xl"></div>
 
             {/* Render Markers on top of the map */}
