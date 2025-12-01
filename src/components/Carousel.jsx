@@ -38,7 +38,6 @@ const Carousel = ({ slides }) => {
   const navBtnStyle = "absolute top-1/2 -translate-y-1/2 z-20 bg-fantasy-dark/50 text-fantasy-gold p-2 rounded-full hover:bg-fantasy-gold hover:text-fantasy-dark transition-colors border-2 border-fantasy-gold/30 backdrop-blur-sm pointer-events-auto";
 
   return (
-    // CHANGED: Changed min-h-[500px] to h-full so it fills the modal body area completely.
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg bg-fantasy-dark/10 border border-fantasy-gold/20">
       
       <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -61,16 +60,14 @@ const Carousel = ({ slides }) => {
             if (swipe < -swipeConfidenceThreshold) paginate(1);
             else if (swipe > swipeConfidenceThreshold) paginate(-1);
           }}
-          // This absolute inset-0 makes the slide fill the container exactly.
           className="absolute inset-0 flex items-center justify-center"
         >
            {/* --- THE SINGLE SCROLL CONTAINER --- */}
-           {/* This div has max-h-full and overflow-y-auto. This is the ONLY place scrolling happens. */}
-           {/* Adjusted padding for better look inside the border */}
            <div className="w-full h-full max-h-full overflow-y-auto px-12 py-8 custom-scrollbar">
-             {/* Added a wrapper for content to ensure sticky header works right with padding */}
-             <div className="relative">
-                <h3 className="text-2xl font-bold mb-6 text-fantasy-accent font-fantasy border-b-2 border-fantasy-gold/30 pb-2 inline-block sticky top-0 bg-fantasy-paper/90 backdrop-blur-md pt-2 z-10">
+             {/* Removed the relative wrapper that was needed for sticky positioning */}
+             <div>
+                {/* CHANGED: Removed 'sticky top-0 bg-fantasy-paper/90 backdrop-blur-md pt-2 z-10' */}
+                <h3 className="text-2xl font-bold mb-6 text-fantasy-accent font-fantasy border-b-2 border-fantasy-gold/30 pb-2 inline-block">
                     {currentSlideData.subtitle}
                 </h3>
                 <ul className="space-y-4 ml-2 pb-4">
