@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import Carousel from './Carousel';
 
@@ -16,51 +16,82 @@ const Modal = ({ isOpen, onClose, data }) => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, [isOpen, onClose]);
 
-    // UX: Prevent body scroll when modal is open
     useEffect(() => {
       if (isOpen) document.body.style.overflow = 'hidden';
       else document.body.style.overflow = 'unset';
     }, [isOpen])
 
+const overlayVariants = {
+  hidden: {
+    opacity: 0,
+    backdropFilter: "blur(0px)",
+    backgroundColor: "rgba(0,0,0,0)"
+  },
+  visible: {
+    opacity: 1,
+    backdropFilter: "blur(6px)",
+    backgroundColor: "rgba(0,0,0,0.55)",
+    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
+  },
+  exit: {
+    opacity: 0,
+    backdropFilter: "blur(0px)",
+    backgroundColor: "rgba(0,0,0,0)",
+    transition: { duration: 0.3, ease: "easeInOut" }
+  },
+};
 
-    const overlayVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { duration: 0.3 } }
-    };
-
-    const modalVariants = {
-        hidden: { y: 50, opacity: 0, scale: 0.95 },
-        // We set a fixed height here (e.g., h-[85vh]) so the internal parts know how much space they have.
-        visible: { 
-            y: 0, 
-            opacity: 1, 
-            scale: 1,
-            transition: { type: "spring", damping: 25, stiffness: 300 } 
-        },
-        exit: { y: 50, opacity: 0, scale: 0.95, transition: { duration: 0.2 } }
-    };
+const modalVariants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.88,
+    y: 40,
+    rotateX: -6,
+    filter: "brightness(0.6) blur(3px)",
+    boxShadow: "0 0 0 rgba(255,215,90,0)",
+    transformOrigin: "center bottom"
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    rotateX: 0,
+    filter: "brightness(1) blur(0px)",
+    boxShadow: "0 0 40px rgba(255,215,90,0.25)",
+    transition: { 
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    }
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.92,
+    y: 30,
+    rotateX: 4,
+    filter: "brightness(0.7) blur(3px)",
+    boxShadow: "0 0 0 rgba(255,215,90,0)",
+    transition: { duration: 0.35, ease: "easeInOut" }
+  }
+};
 
     return (
         <AnimatePresence>
             {isOpen && data && (
-                <motion.div
+                <Motion.div
                     className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
                     initial="hidden"
                     animate="visible"
                     exit="hidden"
                     variants={overlayVariants}
                 >
-                    <motion.div
+                    <Motion.div
                         ref={modalRef}
-                        // CHANGED: Added h-[85vh] to give it a definite height constraint.
-                        // Removed max-h-[90vh] in favor of the explicit height for better flex behavior.
                         className="bg-fantasy-paper bg-parchment-texture text-fantasy-dark w-full max-w-4xl h-[85vh] rounded-lg shadow-2xl border-4 border-fantasy-dark overflow-hidden relative flex flex-col"
                         variants={modalVariants}
                         initial="hidden"
                         animate="visible"
                         exit="exit"
                     >
-                        {/* Header - Flex shrink 0 prevents it from squishing */}
                         <div className="bg-fantasy-dark text-fantasy-gold p-6 flex justify-between items-center border-b-4 border-fantasy-gold/50 relative shrink-0">
                             <div>
                                 <h2 className="text-3xl font-fantasy font-bold tracking-wider">{data.content.mainTitle}</h2>
@@ -76,17 +107,13 @@ const Modal = ({ isOpen, onClose, data }) => {
                             <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-fantasy-gold"></div>
                         </div>
 
-                        {/* Body - THE FIX IS HERE */}
-                        {/* CHANGED: Removed 'overflow-y-auto'. Added 'flex-grow' and 'overflow-hidden'. */}
-                        {/* This forces the child (Carousel) to handle the scrolling within this defined space. */}
                         <div className="relative flex-grow overflow-hidden p-6">
                            <Carousel slides={data.content.slides} />
                         </div>
                         
-                        {/* Footer - Flex shrink 0 prevents it from squishing */}
                         <div className="h-4 bg-fantasy-dark border-t-2 border-fantasy-gold/50 shrink-0"></div>
-                    </motion.div>
-                </motion.div>
+                    </Motion.div>
+                </Motion.div>
             )}
         </AnimatePresence>
     );

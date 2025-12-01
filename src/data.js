@@ -9,7 +9,6 @@ export const locations = [
     content: {
       mainTitle: "The Citadel of Knowledge", 
       slides: [
-        
         {
           subtitle: "B.E. in Computer Science and Engineering",
           body: [
@@ -19,7 +18,6 @@ export const locations = [
             "Relevant Coursework: JAVA, DBMS, Operating Systems, Computer Networks."
           ]
         },
-
         {
             subtitle: "Class 12th (CBSE)",
             body: [
@@ -37,7 +35,6 @@ export const locations = [
               "Marks: 92.2%",
             ]
         }
-
 
       ]
     }
@@ -132,7 +129,8 @@ export const locations = [
             subtitle: "Professional Certificates",
             body: [
                 "Linear Algebra for Machine Learning and Data Science - DeepLearning.AI.",
-                "NPTEL Cloud Computing - IIT Kharagpur.",     
+                "NPTEL Cloud Computing - IIT Kharagpur.",   
+                "Programming with JavaScript - Meta."  
             ]
         }
       ]
@@ -149,9 +147,18 @@ export const locations = [
           {
             subtitle: "Connect with me",
             body: [
-                "Email: namanluthra70@example.com",
-                "LinkedIn: www.linkedin.com/in/naman-luthra",
-                "GitHub: github.com/namanluthra38"
+                { 
+                    label: "Email: namanluthra70@example.com", 
+                    url: "mailto:namanluthra70@example.com" 
+                },
+                { 
+                    label: "LinkedIn: /in/naman-luthra", 
+                    url: "https://www.linkedin.com/in/naman-luthra" 
+                },
+                { 
+                    label: "GitHub: /namanluthra38", 
+                    url: "https://github.com/namanluthra38" 
+                }
             ]
           }
       ]

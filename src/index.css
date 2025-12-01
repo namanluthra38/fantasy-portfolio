@@ -10,10 +10,8 @@
 
 body {
   @apply bg-fantasy-dark text-fantasy-paper font-sans overflow-hidden;
-  /* The overflow-hidden is crucial for the parallax effect */
 }
 
-/* Custom Scrollbar for Modals */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -28,18 +26,14 @@ body {
   background: #b08d1e; 
 }
 
-/* Add to src/index.css */
-
 @layer utilities {
-  /* Utility class for internal containers that need scrolling */
   .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: #d4af37 #2c2520;
   }
 
-  /* Webkit (Chrome/Safari/Edge) targeting for the utility class */
   .custom-scrollbar::-webkit-scrollbar {
-    width: 6px; /* Slightly thinner for internal elements */
+    width: 6px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
     background: rgba(44, 37, 32, 0.5);

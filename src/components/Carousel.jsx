@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
 
 const Carousel = ({ slides }) => {
   const [[page, direction], setPage] = useState([0, 0]);
@@ -41,7 +41,7 @@ const Carousel = ({ slides }) => {
     <div className="relative w-full h-full flex items-center justify-center overflow-hidden rounded-lg bg-fantasy-dark/10 border border-fantasy-gold/20">
       
       <AnimatePresence initial={false} custom={direction} mode="wait">
-        <motion.div
+        <Motion.div
           key={page}
           custom={direction}
           variants={variants}
@@ -62,27 +62,42 @@ const Carousel = ({ slides }) => {
           }}
           className="absolute inset-0 flex items-center justify-center"
         >
-           {/* --- THE SINGLE SCROLL CONTAINER --- */}
            <div className="w-full h-full max-h-full overflow-y-auto px-12 py-8 custom-scrollbar">
-             {/* Removed the relative wrapper that was needed for sticky positioning */}
              <div>
-                {/* CHANGED: Removed 'sticky top-0 bg-fantasy-paper/90 backdrop-blur-md pt-2 z-10' */}
                 <h3 className="text-2xl font-bold mb-6 text-fantasy-accent font-fantasy border-b-2 border-fantasy-gold/30 pb-2 inline-block">
                     {currentSlideData.subtitle}
                 </h3>
                 <ul className="space-y-4 ml-2 pb-4">
-                    {currentSlideData.body.map((item, index) => (
-                        <li key={index} className="flex items-start">
-                            <span className="text-fantasy-accent mr-3 text-xl leading-none mt-1">•</span>
-                            <p className="text-lg leading-relaxed font-medium text-fantasy-dark">{item}</p>
-                        </li>
-                    ))}
+                    {currentSlideData.body.map((item, index) => {
+                        const isLink = typeof item === 'object' && item.url;
+                        const content = isLink ? item.label : item;
+
+                        return (
+                            <li key={index} className="flex items-start">
+                                <span className="text-fantasy-accent mr-3 text-xl leading-none mt-1">•</span>
+
+                                {isLink ? (
+                                    <a
+                                        href={item.url} 
+                                        target="_blank" 
+                                        rel="noopener noreferrer"
+                                        className="text-lg leading-relaxed font-medium text-[#000] hover:text-[#7d7505] underline decoration-[#d4af37]/60 underline-offset-4 transition-colors flex items-center gap-2 group"
+                                    >
+                                        {content}
+                                        <ExternalLink size={16} className="opacity-70 group-hover:opacity-100 transition-opacity" />
+                                    </a>
+                                ) : (
+                                    <p className="text-lg leading-relaxed font-medium text-fantasy-dark">
+                                        {content}
+                                    </p>
+                                )}
+                            </li>
+                        );
+                    })}
                 </ul>
              </div>
            </div>
-           {/* ----------------------------------- */}
-
-        </motion.div>
+        </Motion.div>
       </AnimatePresence>
 
       {slides.length > 1 && (
@@ -94,7 +109,6 @@ const Carousel = ({ slides }) => {
             <ChevronRight size={24} />
           </button>
            
-           {/* Dots */}
            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20 pointer-events-none">
             {slides.map((_, idx) => (
                 <div 
