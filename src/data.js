@@ -74,7 +74,7 @@ export const locations = [
               "Developed an email notification service using JavaMailSender with daily, weekly, and monthly reminders.",
               { 
                 label: "View Source Code on GitHub", 
-                url: "https://github.com/namanluthra38/verfalarm", 
+                url: "https://github.com/namanluthra38/Product-Expiration-Reminder", 
                 icon: "github" 
               },
             ]
