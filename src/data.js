@@ -56,22 +56,28 @@ export const locations = [
               "Developed modular microservices for student management, room allocation, payments, and admin operations.",
               "Used PostgreSQL for relational data and MongoDB for flexible document-based records.",
               "Containerized all services using Docker for portability, scalability, and simplified deployment.",
-              "Focused on service isolation, reliability, and smooth communication between frontend and backend."
+              { 
+                label: "View Source Code on GitHub", 
+                url: "https://github.com/namanluthra38/hostelhelp", 
+                icon: "github" 
+              },
             ]
-
         },
         {
             subtitle: "Verfalarm (2025) | Product Expiration Reminder",
             body: [
-              "A full-stack application that helps users track product expiration dates and receive timely reminders.",
+              "A full-stack application that helps users track product expiration dates and receive timely reminders.",              
               "Technologies: React (frontend), Spring Boot (backend), MongoDB (database).",
               "Engineered a scalable Spring Boot backend with MongoDB for efficient data handling.",
               "Designed RESTful APIs for authentication, product management, and reminder scheduling.",
               "Integrated JWT-based authentication to secure all user sessions and endpoints.",
               "Developed an email notification service using JavaMailSender with daily, weekly, and monthly reminders.",
-              "Focused on performance, reliability, and user-centric workflows following industry best practices."
+              { 
+                label: "View Source Code on GitHub", 
+                url: "https://github.com/namanluthra38/verfalarm", 
+                icon: "github" 
+              },
             ]
-
         }
       ]
     }
@@ -148,16 +154,19 @@ export const locations = [
             subtitle: "Connect with me",
             body: [
                 { 
-                    label: "Email: namanluthra70@example.com", 
-                    url: "mailto:namanluthra70@example.com" 
+                    label: "Mail Me", 
+                    url: "mailto:namanluthra70@gmail.com",
+                    icon: "mail"
                 },
                 { 
-                    label: "LinkedIn: /in/naman-luthra", 
-                    url: "https://www.linkedin.com/in/naman-luthra" 
+                    label: "LinkedIn Profile", 
+                    url: "https://www.linkedin.com/in/naman-luthra",
+                    icon: "linkedin"
                 },
                 { 
-                    label: "GitHub: /namanluthra38", 
-                    url: "https://github.com/namanluthra38" 
+                    label: "GitHub Profile", 
+                    url: "https://github.com/namanluthra38",
+                    icon: "github"
                 }
             ]
           }

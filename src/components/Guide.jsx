@@ -56,10 +56,9 @@ const Guide = ({ isVisible, onDismiss }) => {
                   opacity: 0, scale: 0.8, y: 20,
                   transition: { delay: 0, duration: 0.3 }
               }}
-              className="absolute left-[60%] sm:left-[62%] bottom-[60%] z-30 pointer-events-auto w-[220px] sm:w-[280px] md:w-[350px]"
+              className="absolute left-[60%] sm:left-[62%] bottom-[60%] z-30 pointer-events-auto w-[220px] sm:w-[280px] md:w-[350px] overflow-visible"
             >
               <div className="bg-[#1a1612]/95 border-2 border-fantasy-gold rounded-lg p-4 sm:p-5 shadow-2xl relative text-fantasy-paper font-fantasy tracking-wide leading-relaxed">
-
                 <div className="absolute bottom-3 -left-2 w-4 h-4 bg-[#1a1612] border-l-2 border-b-2 border-fantasy-gold transform rotate-45"></div>
 
                 <div className="absolute -top-4 left-4 bg-fantasy-accent px-3 py-1 rounded border border-fantasy-gold shadow-md">
@@ -68,10 +67,10 @@ const Guide = ({ isVisible, onDismiss }) => {
 
                 <button
                   onClick={onDismiss}
-                  className="absolute -top-3 -right-3 bg-fantasy-dark border border-fantasy-gold rounded-full p-1 text-fantasy-gold hover:text-white hover:bg-red-900 transition-colors"
+                  aria-label="Close guide"
+                  className="absolute -top-2 -right-2 z-50 flex items-center justify-center bg-fantasy-dark border border-fantasy-gold rounded-full p-1 text-fantasy-gold hover:text-white hover:bg-red-900 transition-colors shadow-sm"
                 >
-                  <X size={14} className="sm:hidden" />
-                  <X size={16} className="hidden sm:inline" />
+                  <X size={16} />
                 </button>
 
                 <p className="text-xs sm:text-sm md:text-base drop-shadow-md min-h-[64px]">
