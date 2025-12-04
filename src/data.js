@@ -5,7 +5,7 @@ export const locations = [
     id: 'education',
     label: 'Education',
     icon: BookOpen,
-    x: 20, y: 30, xMobile: 20, yMobile: 30,
+    x: 20, y: 30, xMobile: 20, yMobile: 25,
     content: {
       mainTitle: "The Citadel of Knowledge", 
       slides: [

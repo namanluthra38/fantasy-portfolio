@@ -58,7 +58,7 @@ const Guide = ({ isVisible, onDismiss }) => {
               }}
               className="absolute left-[60%] sm:left-[62%] bottom-[60%] z-30 pointer-events-auto w-[220px] sm:w-[280px] md:w-[350px] overflow-visible"
             >
-              <div className="bg-[#1a1612]/95 border-2 border-fantasy-gold rounded-lg p-4 sm:p-5 shadow-2xl relative text-fantasy-paper font-fantasy tracking-wide leading-relaxed">
+              <div className="bg-[#1a1612]/95 border-2 border-fantasy-gold rounded-lg pt-10 p-4 sm:pt-12 sm:p-5 shadow-2xl relative text-fantasy-paper font-fantasy tracking-wide leading-relaxed">
                 <div className="absolute bottom-3 -left-2 w-4 h-4 bg-[#1a1612] border-l-2 border-b-2 border-fantasy-gold transform rotate-45"></div>
 
                 <div className="absolute -top-4 left-4 bg-fantasy-accent px-3 py-1 rounded border border-fantasy-gold shadow-md">

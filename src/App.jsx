@@ -71,12 +71,15 @@ function App() {
       </div>
 
       {/* The Movable Map Container */}
-      <motion.div 
-        className="absolute inset-[-5%] w-[110%] h-[110%] z-10 flex items-center justify-center"
-        style={{ x: moveX, y: moveY }}
-        transition={{ type: "tween", ease: "easeOut", duration: 0.5 }}
-      >
-        <div className="relative w-full h-full max-w-[2500px] max-h-[1400px] mx-auto aspect-video shadow-2xl">
+      {(() => {
+        const mapWrapperClass = isMobile ? 'absolute inset-0 w-full h-full z-10 flex items-center justify-center' : 'absolute inset-[-5%] w-[110%] h-[110%] z-10 flex items-center justify-center';
+        const innerDivClass = isMobile ? 'relative w-full h-full mx-auto shadow-2xl' : 'relative w-full h-full max-w-[2500px] max-h-[1400px] mx-auto aspect-video shadow-2xl';
+        const motionStyle = isMobile ? {} : { x: moveX, y: moveY };
+        const motionTransition = isMobile ? {} : { type: "tween", ease: "easeOut", duration: 0.5 };
+
+        return (
+          <motion.div className={mapWrapperClass} style={motionStyle} transition={motionTransition}>
+            <div className={innerDivClass}>
             <img 
               src={isMobile ? mobileMap : mapBg} 
               alt="Fantasy World Map" 
@@ -120,6 +123,8 @@ function App() {
             ))}
         </div>
       </motion.div>
+        );
+      })() }
 
       <Guide 
         isVisible={showGuide && !activeLocationId} 
