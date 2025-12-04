@@ -73,7 +73,7 @@ function App() {
       {/* The Movable Map Container */}
       {(() => {
         const mapWrapperClass = isMobile ? 'absolute inset-0 w-full h-full z-10 flex items-center justify-center' : 'absolute inset-[-5%] w-[110%] h-[110%] z-10 flex items-center justify-center';
-        const innerDivClass = isMobile ? 'relative w-full h-full mx-auto shadow-2xl' : 'relative w-full h-full max-w-[2500px] max-h-[1400px] mx-auto aspect-video shadow-2xl';
+        const innerDivClass = isMobile ? 'relative w-full h-full mx-auto shadow-2xl overflow-hidden' : 'relative w-full h-full max-w-[2500px] max-h-[1400px] mx-auto aspect-video shadow-2xl';
         const motionStyle = isMobile ? {} : { x: moveX, y: moveY };
         const motionTransition = isMobile ? {} : { type: "tween", ease: "easeOut", duration: 0.5 };
 
@@ -83,7 +83,7 @@ function App() {
             <img 
               src={isMobile ? mobileMap : mapBg} 
               alt="Fantasy World Map" 
-              className="w-full h-full object-cover rounded-xl opacity-90"
+              className={isMobile ? "w-full h-[105%] object-cover object-top rounded-xl opacity-90" : "w-full h-full object-cover rounded-xl opacity-90"}
             />
             <div className="absolute inset-0 bg-fantasy-dark/30 mix-blend-overlay pointer-events-none rounded-xl"></div>
 

@@ -127,7 +127,7 @@ export const locations = [
     id: 'certifications',
     label: 'Certifications',
     icon: Medal,
-    x: 58, y: 75, xMobile: 32, yMobile: 75,
+    x: 58, y: 75, xMobile: 35, yMobile: 78,
     content: {
       mainTitle: "Guild Seals",
       slides: [
