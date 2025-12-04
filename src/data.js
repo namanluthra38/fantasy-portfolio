@@ -5,7 +5,7 @@ export const locations = [
     id: 'education',
     label: 'Education',
     icon: BookOpen,
-    x: 20, y: 30,
+    x: 20, y: 30, xMobile: 20, yMobile: 30,
     content: {
       mainTitle: "The Citadel of Knowledge", 
       slides: [
@@ -43,7 +43,7 @@ export const locations = [
     id: 'projects',
     label: 'Projects',
     icon: Code,
-    x: 45, y: 25,
+    x: 35, y: 25, xMobile: 45, yMobile: 35,
     content: {
       mainTitle: "The Forge of Creation",
       slides: [
@@ -86,7 +86,7 @@ export const locations = [
     id: 'skills',
     label: 'Skills',
     icon: ScrollText,
-    x: 78, y: 40,
+    x: 78, y: 40, xMobile: 68, yMobile: 23,
     content: {
       mainTitle: "The Arsenal of Skills",
       slides: [
@@ -108,7 +108,7 @@ export const locations = [
     id: 'achievements',
     label: 'Achievements',
     icon: Award,
-    x: 30, y: 65,
+    x: 30, y: 65, xMobile: 25, yMobile: 50,
     content: {
       mainTitle: "Hall of Triumphs",
       slides: [
@@ -127,7 +127,7 @@ export const locations = [
     id: 'certifications',
     label: 'Certifications',
     icon: Medal,
-    x: 58, y: 75,
+    x: 58, y: 75, xMobile: 32, yMobile: 75,
     content: {
       mainTitle: "Guild Seals",
       slides: [
@@ -146,7 +146,7 @@ export const locations = [
     id: 'contact',
     label: 'Contact',
     icon: Mail,
-    x: 85, y: 60,
+    x: 85, y: 60, xMobile: 80, yMobile: 55,
     content: {
       mainTitle: "The Raven's Tower",
       slides: [
