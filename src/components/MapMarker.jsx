@@ -1,7 +1,9 @@
 import React from 'react';
 import { motion as Motion } from 'framer-motion';
+import { useSound } from '../context/SoundContext';
 
 const MapMarker = ({ location, onClick, isMobile = false }) => {
+  const { playHover, playClick } = useSound();
   const Icon = location.icon;
   const posX = isMobile && location.xMobile !== undefined ? location.xMobile : location.x;
   const posY = isMobile && location.yMobile !== undefined ? location.yMobile : location.y;
@@ -12,14 +14,21 @@ const MapMarker = ({ location, onClick, isMobile = false }) => {
   const hoverProps = isMobile ? {} : { whileHover: { scale: 1.15, y: -4 } };
   const labelClass = isMobile ? 'font-fantasy font-bold text-sm text-fantasy-paper drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)] bg-fantasy-dark/60 px-1 py-0.5 rounded-md' : 'font-fantasy font-bold text-lg text-fantasy-paper drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] bg-fantasy-dark/60 px-2 py-1 rounded-md';
 
+  const handleClick = (e) => {
+    e.stopPropagation();
+    playClick();
+    onClick(location.id);
+  };
+
   return (
     <div
       className="absolute z-20 cursor-pointer group"
       style={{ left: `${posX}%`, top: `${posY}%` }}
-      onClick={() => onClick(location.id)}
+      onClick={handleClick}
+      onMouseEnter={playHover}
     >
       <div className={`${outerGlowClass} bg-fantasy-gold opacity-20 rounded-full blur-xl group-hover:opacity-40 transition-opacity duration-300`}></div>
-      
+
       <Motion.div
         {...hoverProps}
         className={`relative bg-fantasy-dark border-2 border-fantasy-gold ${paddingClass} rounded-full shadow-[0_0_15px_rgba(212,175,55,0.5)] text-fantasy-gold`}
