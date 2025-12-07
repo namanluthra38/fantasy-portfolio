@@ -2,11 +2,16 @@ import React from 'react';
 import { motion as Motion } from 'framer-motion';
 import { useSound } from '../context/SoundContext';
 
-const MapMarker = ({ location, onClick, isMobile = false }) => {
+const MapMarker = ({ location, onClick, isMobile = false, isVisited = false }) => {
   const { playHover, playClick } = useSound();
   const Icon = location.icon;
   const posX = isMobile && location.xMobile !== undefined ? location.xMobile : location.x;
   const posY = isMobile && location.yMobile !== undefined ? location.yMobile : location.y;
+
+  const glowColor = isVisited ? 'bg-fantasy-visited' : 'bg-fantasy-gold';
+  const borderColor = isVisited ? 'border-fantasy-visited' : 'border-fantasy-gold';
+  const textColor = isVisited ? 'text-fantasy-visited' : 'text-fantasy-gold';
+  const shadowColor = isVisited ? 'rgba(163, 201, 54, 0.5)' : 'rgba(212,175,55,0.5)';
 
   const outerGlowClass = isMobile ? 'absolute -inset-2' : 'absolute -inset-4';
   const paddingClass = isMobile ? 'p-2' : 'p-3';
@@ -27,11 +32,11 @@ const MapMarker = ({ location, onClick, isMobile = false }) => {
       onClick={handleClick}
       onMouseEnter={playHover}
     >
-      <div className={`${outerGlowClass} bg-fantasy-gold opacity-20 rounded-full blur-xl group-hover:opacity-40 transition-opacity duration-300`}></div>
+      <div className={`${outerGlowClass} ${glowColor} opacity-20 rounded-full blur-xl group-hover:opacity-40 transition-opacity duration-300`}></div>
 
       <Motion.div
         {...hoverProps}
-        className={`relative bg-fantasy-dark border-2 border-fantasy-gold ${paddingClass} rounded-full shadow-[0_0_15px_rgba(212,175,55,0.5)] text-fantasy-gold`}
+        className={`relative bg-fantasy-dark border-2 ${borderColor} ${paddingClass} rounded-full shadow-[0_0_15px_${shadowColor}] ${textColor} transition-colors duration-500`}
       >
         <Icon size={iconSize} strokeWidth={1.5} />
       </Motion.div>

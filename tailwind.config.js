@@ -14,6 +14,7 @@ export default {
         'fantasy-paper': '#f4ecd8',
         'fantasy-accent': '#c0392b',
         'fantasy-gold': '#d4af37',
+        'fantasy-visited': '#a3c936',
       },
       backgroundImage: {
         'parchment-texture': "url('https://www.transparenttextures.com/patterns/aged-paper.png')",

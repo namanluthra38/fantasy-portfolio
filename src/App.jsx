@@ -17,6 +17,11 @@ function AppContent() {
   const [showGuide, setShowGuide] = useState(true);
 
 
+  const [visitedData, setVisitedData] = useState(() => {
+    const saved = localStorage.getItem('visitedLocations');
+    return saved ? JSON.parse(saved) : [];
+  });
+
   const [lastClickedId, setLastClickedId] = useState(null);
   const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth <= 768 : false);
 
@@ -47,8 +52,14 @@ function AppContent() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('visitedLocations', JSON.stringify(visitedData));
+  }, [visitedData]);
 
   const handleMarkerClick = (id) => {
+    if (!visitedData.includes(id)) {
+      setVisitedData(prev => [...prev, id]);
+    }
     setActiveLocationId(id);
     setShowGuide(false);
     setLastClickedId(id);
@@ -122,6 +133,7 @@ function AppContent() {
                   location={location}
                   onClick={handleMarkerClick}
                   isMobile={isMobile}
+                  isVisited={visitedData.includes(location.id)}
                 />
               ))}
             </div>
